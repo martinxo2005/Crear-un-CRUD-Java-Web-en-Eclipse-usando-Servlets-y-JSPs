@@ -1,0 +1,4 @@
+com\miempresa\model\Persona.class
+com\miempresa\controller\HolaServlet.class
+com\miempresa\miaplicacionweb\resources\JakartaEE11Resource.class
+com\miempresa\miaplicacionweb\JakartaRestConfiguration.class

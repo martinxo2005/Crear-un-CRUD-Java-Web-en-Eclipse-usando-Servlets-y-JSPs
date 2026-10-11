@@ -1,28 +1,23 @@
 package com.miempresa.model;
 
 import java.io.Serializable;
-import java.util.Objects;
 
-/**
- * Clase POJO (Plain Old Java Object) para representar la entidad Persona.
- * Implementa Serializable para permitir su transporte entre capas en entornos web.
- */
 public class Persona implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private Long id;
+    private int id;
     private String nombre;
     private String apellidos;
     private String email;
     private int edad;
 
-    // 1. Constructor vacío (obligatorio para un JavaBeans / POJO)
+    // Constructor vacío (necesario para JavaBeans)
     public Persona() {
     }
 
-    // 2. Constructor con todos los parámetros
-    public Persona(Long id, String nombre, String apellidos, String email, int edad) {
+    // Constructor completo con ID (para lecturas de BBDD)
+    public Persona(int id, String nombre, String apellidos, String email, int edad) {
         this.id = id;
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -30,7 +25,7 @@ public class Persona implements Serializable {
         this.edad = edad;
     }
 
-    // 3. Constructor conveniente sin ID (ideal para creación previa a guardar en BBDD)
+    // Constructor sin ID (para inserciones en BBDD)
     public Persona(String nombre, String apellidos, String email, int edad) {
         this.nombre = nombre;
         this.apellidos = apellidos;
@@ -38,13 +33,12 @@ public class Persona implements Serializable {
         this.edad = edad;
     }
 
-    // --- GETTERS Y SETTERS ---
-
-    public Long getId() {
+    // Getters y Setters
+    public int getId() {
         return id;
     }
 
-    public void setId(Long id) {
+    public void setId(int id) {
         this.id = id;
     }
 
@@ -78,31 +72,5 @@ public class Persona implements Serializable {
 
     public void setEdad(int edad) {
         this.edad = edad;
-    }
-
-    // --- MÉTODOS SOBREESCRITOS ---
-
-    @Override
-    public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
-        Persona persona = (Persona) o;
-        return Objects.equals(id, persona.id);
-    }
-
-    @Override
-    public int hashCode() {
-        return Objects.hash(id);
-    }
-
-    @Override
-    public String toString() {
-        return "Persona{" +
-                "id=" + id +
-                ", nombre='" + nombre + '\'' +
-                ", apellidos='" + apellidos + '\'' +
-                ", email='" + email + '\'' +
-                ", edad=" + edad +
-                '}';
     }
 }
